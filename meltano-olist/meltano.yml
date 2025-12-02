@@ -1,0 +1,27 @@
+version: 1
+default_environment: dev
+project_id: 2d3ef3b4-04f8-4593-8202-faade8602c6c
+environments:
+- name: dev
+- name: staging
+- name: prod
+plugins:
+  extractors:
+  - name: tap-csv
+    variant: meltanolabs
+    pip_url: git+https://github.com/MeltanoLabs/tap-csv.git
+    config:
+      root_dir: /data
+  loaders:
+  - name: target-bigquery
+    variant: z3z1ma
+    pip_url: git+https://github.com/z3z1ma/target-bigquery.git
+    config:
+      credentials_json: /home/darwin/NTU PACE Data Science Cohort 
+        3/my-project-dsai-3-9c170967ea0e.json
+      dataset: ingestion
+      denormalized: true
+      flattening_enabled: true
+      flattening_max_depth: 1
+      method: batch_job
+      project: my-project-dsai-3

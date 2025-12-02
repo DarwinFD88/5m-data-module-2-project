@@ -1,5 +1,11 @@
 # Step-by-Step Guide
 
+First, to create Meltano project, run:
+```bash
+meltano init meltano-olist
+cd meltano-olist
+```
+
 1. Add the Extractor (Tap) 
 For local files, you can use a generic file-based tap or create a custom one. A common approach is to use tap-csv for CSV files.
 
@@ -48,4 +54,7 @@ Execute the pipeline using the meltano elt command to extract data from the loca
 
 ```bash
 meltano elt tap-csv target-bigquery --job_id=local_files_to_bigquery
+```
+```bash
+meltano run tap-csv target-bigquery
 ```
